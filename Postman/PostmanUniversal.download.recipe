@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest amd64 and arm64 versions of Postman.</string>
+    <key>Identifier</key>
+    <string>com.github.sks-recipes.download.PostmanUniversal</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Postman</string>
+        <key>AMD64_URL</key>
+        <string>https://dl.pstmn.io/download/latest/osx_64</string>
+        <key>ARM64_URL</key>
+        <string>https://dl.pstmn.io/download/latest/osx_arm64</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.6.1</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader/string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%AMD64_URL%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%ARM64_URL%</string>
+            </dict>
+        </dict>
+          <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+          </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_format</key>
+                <string>zip</string>
+                <key>archive_path</key>
+                <string>%pathname%</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
