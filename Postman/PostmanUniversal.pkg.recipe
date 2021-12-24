@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest amd64 and arm64 versions of Postman and combines them into a package</string>
+    <key>Identifier</key>
+    <string>com.github.sks-recipes.pkg.DockerUniversal</string>
+    <key>Input</key>
+    <dict>
+        <key>BUNDLE_ID</key>
+        <string>com.docker.docker</string>
+        <key>NAME</key>
+        <string>Postman</string>
+        <key>AMD64_URL</key>
+        <string>https://dl.pstmn.io/download/latest/osx_64</string>
+        <key>ARM64_URL</key>
+        <string>https://dl.pstmn.io/download/latest/osx_arm64</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.6.1</string>
+    <key>ParentRecipe</key>
+    <string>com.github.sks-recipes.download.DockerUniversal</string>
+    <key>Process</key>
+    <array>
+        
+    </array>
+</dict>
+</plist>
+
