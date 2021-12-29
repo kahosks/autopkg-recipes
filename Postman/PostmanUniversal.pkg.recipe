@@ -40,7 +40,7 @@
             <key>Arguments</key>
             <dict>
                 <key>app_path</key>
-                <string>%RECIPE_CACHE_DIR%/Postman/amd64/Postman.app</string>
+                <string>%RECIPE_CACHE_DIR%/Postman/arm64/Postman.app</string>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/arm64/%NAME%-arm64-%version%.pkg</string>
             </dict>
