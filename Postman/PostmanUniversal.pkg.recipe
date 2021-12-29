@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest amd64 and arm64 versions of Postman and combines them into a package</string>
+    <string>Downloads the latest amd64 and arm64 versions of Postman and combines them into a package.</string>
     <key>Identifier</key>
-    <string>com.github.sks-recipes.pkg.DockerUniversal</string>
+    <string>com.github.sks-recipes.pkg.PostmanUniversal</string>
     <key>Input</key>
     <dict>
         <key>BUNDLE_ID</key>
@@ -20,10 +20,143 @@
     <key>MinimumVersion</key>
     <string>0.6.1</string>
     <key>ParentRecipe</key>
-    <string>com.github.sks-recipes.download.DockerUniversal</string>
+    <string>com.github.sks-recipes.download.PostmanUniversal</string>
     <key>Process</key>
     <array>
-        
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>app_path</key>
+                <string>%RECIPE_CACHE_DIR%/Postman/amd64/Postman.app</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/amd64/%NAME%-amd64-%version%.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>app_path</key>
+                <string>%RECIPE_CACHE_DIR%/Postman/amd64/Postman.app</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/arm64/%NAME%-arm64-%version%.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/universal</string>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>scripts</key>
+                    <string>0755</string>
+                    <key>root</key>
+                    <string>0755</string>
+                    <key>root/private</key>
+                    <string>0755</string>
+                    <key>root/private/tmp</key>
+                    <string>0777</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FileMover</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source</key>
+                <string>%RECIPE_CACHE_DIR%/amd64/%NAME%-amd64-%version%.pkg%</string>
+                <key>target</key>
+                <string>%RECIPE_CACHE_DIR%/universal/root/private/tmp/%NAME%-amd64-%version%.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FileMover</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source</key>
+                <string>%RECIPE_CACHE_DIR%/amd64/%NAME%-arm64-%version%.pkg%</string>
+                <key>target</key>
+                <string>%RECIPE_CACHE_DIR%/universal/root/private/tmp/%NAME%-arm64-%version%.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>file_path</key>
+                <string>%RECIPE_CACHE_DIR%/universal/scripts/postinstall</string>
+                <key>file_mode</key>
+                <string>0755</string>
+                <key>file_content</key>
+                <string> #!/bin/zsh
+# This script is adapted from Chilcote's Docker recipe, com.github.chilcote.pkg.Docker
+
+declare -r INTEL="$3/private/tmp/%NAME%-amd64-%version%.pkg"
+declare -r APPLE_SILICON="$3/private/tmp/%NAME%-arm64-%version%.pkg"
+
+ARCH=$(/usr/bin/arch)
+
+if [[ "${ARCH}" == i386 ]]
+then
+    /usr/sbin/installer -pkg "${INTEL}" -target "$3"
+    EXIT_CODE=$?
+else
+    /usr/sbin/installer -pkg "${APPLE_SILICON}" -target "$3"
+    EXIT_CODE=$?
+fi
+
+echo "Cleaning up..."
+/bin/rm -rf "${INTEL}" "${APPLE_SILICON}"
+
+# Check exit code and bail if the package didn't install correctly
+if [[ "${EXIT_CODE}" -ne 0 ]]
+then
+    echo "Something went wrong during package installation. Please check install.log and try again. Bailing..."
+    exit 1
+fi</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_request</key>
+                <dict>
+                    <key>id</key>
+                    <string>%BUNDLE_ID%</string>
+                    <key>options</key>
+                    <string>purge_ds_store</string>
+                    <key>pkgname</key>
+                    <string>%NAME%Universal-%version%</string>
+                    <key>pkgroot</key>
+                    <string>%RECIPE_CACHE_DIR%/universal/root</string>
+                    <key>scripts</key>
+                    <string>%RECIPE_CACHE_DIR%/universal/scripts</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>path_list</key>
+            <array>
+                    <string>%RECIPE_CACHE_DIR%/universal</string>
+                    <string>%RECIPE_CACHE_DIR%/amd64</string>
+                    <string>%RECIPE_CACHE_DIR%/arm64</string>
+            </array>
+        </dict>
     </array>
 </dict>
 </plist>
