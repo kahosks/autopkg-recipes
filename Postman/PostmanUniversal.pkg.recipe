@@ -30,7 +30,7 @@
             <dict>
                 <key>pkgdirs</key>
                 <dict>
-                    <key>Applications</keys>
+                    <key>Applications</key>
                     <string>0775</string>
                 </dict>
                 <key>pkgroot</key>
@@ -55,7 +55,7 @@
             <dict>
                 <key>pkgdirs</key>
                 <dict>
-                    <key>Applications</keys>
+                    <key>Applications</key>
                     <string>0775</string>
                 </dict>
                 <key>pkgroot</key>
