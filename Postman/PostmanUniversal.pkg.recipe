@@ -25,13 +25,41 @@
     <array>
         <dict>
             <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguements</key>
+            <dict>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</keys>
+                    <string>0775</string>
+                </dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/amd64</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>AppPkgCreator</string>
             <key>Arguments</key>
             <dict>
                 <key>app_path</key>
                 <string>%RECIPE_CACHE_DIR%/Postman/amd64/Postman.app</string>
                 <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%app_name%-%version%.pkg</string>
+                <string>%RECIPE_CACHE_DIR%/amd64/%NAME%-amd64-%version%.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguements</key>
+            <dict>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</keys>
+                    <string>0775</string>
+                </dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/arm64</string>
             </dict>
         </dict>
         <dict>
