@@ -30,6 +30,8 @@
             <dict>
                 <key>app_path</key>
                 <string>%RECIPE_CACHE_DIR%/Postman/amd64/Postman.app</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/amd64/%NAME%-amd64-%version%.pkg</string>
             </dict>
         </dict>
         <dict>
@@ -39,6 +41,8 @@
             <dict>
                 <key>app_path</key>
                 <string>%RECIPE_CACHE_DIR%/Postman/arm64/Postman.app</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/arm64/%NAME%-arm64-%version%.pkg</string>
             </dict>
         </dict>
         <dict>
