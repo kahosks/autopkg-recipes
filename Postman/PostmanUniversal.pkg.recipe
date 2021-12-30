@@ -26,7 +26,7 @@
         <dict>
             <key>Processor</key>
             <string>PkgRootCreator</string>
-            <key>Arguements</key>
+            <key>Arguments</key>
             <dict>
                 <key>pkgdirs</key>
                 <dict>
@@ -51,7 +51,7 @@
         <dict>
             <key>Processor</key>
             <string>PkgRootCreator</string>
-            <key>Arguements</key>
+            <key>Arguments</key>
             <dict>
                 <key>pkgdirs</key>
                 <dict>
