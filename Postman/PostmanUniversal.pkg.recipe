@@ -128,8 +128,8 @@
                 <string> #!/bin/zsh
 # This script is adapted from Chilcote's Docker recipe, com.github.chilcote.pkg.Docker
 
-declare -r INTEL="$3/private/tmp/%NAME%-amd64-%version%.pkg"
-declare -r APPLE_SILICON="$3/private/tmp/%NAME%-arm64-%version%.pkg"
+declare -r INTEL="$3/private/tmp/%NAME%-amd64.pkg"
+declare -r APPLE_SILICON="$3/private/tmp/%NAME%-arm64.pkg"
 
 ARCH=$(/usr/bin/arch)
 
