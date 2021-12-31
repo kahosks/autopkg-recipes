@@ -99,9 +99,9 @@
             <key>Arguments</key>
             <dict>
                 <key>source</key>
-                <string>%RECIPE_CACHE_DIR%/amd64/Applications/%NAME%-amd64-%version%.pkg%</string>
+                <string>%RECIPE_CACHE_DIR%/amd64/Applications/%NAME%-amd64.pkg%</string>
                 <key>target</key>
-                <string>%RECIPE_CACHE_DIR%/universal/root/private/tmp/%NAME%-amd64-%version%.pkg</string>
+                <string>%RECIPE_CACHE_DIR%/universal/root/private/tmp/%NAME%-amd64.pkg</string>
             </dict>
         </dict>
         <dict>
@@ -110,9 +110,9 @@
             <key>Arguments</key>
             <dict>
                 <key>source</key>
-                <string>%RECIPE_CACHE_DIR%/amd64/Applications/%NAME%-arm64-%version%.pkg%</string>
+                <string>%RECIPE_CACHE_DIR%/amd64/Applications/%NAME%-arm64.pkg%</string>
                 <key>target</key>
-                <string>%RECIPE_CACHE_DIR%/universal/root/private/tmp/%NAME%-arm64-%version%.pkg</string>
+                <string>%RECIPE_CACHE_DIR%/universal/root/private/tmp/%NAME%-arm64.pkg</string>
             </dict>
         </dict>
         <dict>
@@ -165,7 +165,7 @@ fi</string>
                     <key>options</key>
                     <string>purge_ds_store</string>
                     <key>pkgname</key>
-                    <string>%NAME%Universal-%version%</string>
+                    <string>%NAME%Universal</string>
                     <key>pkgroot</key>
                     <string>%RECIPE_CACHE_DIR%/universal/root</string>
                     <key>scripts</key>
