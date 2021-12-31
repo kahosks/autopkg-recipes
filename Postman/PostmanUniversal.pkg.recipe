@@ -135,9 +135,11 @@ ARCH=$(/usr/bin/arch)
 
 if [[ "${ARCH}" == i386 ]]
 then
+    echo "Intel/i386 architecture detected."
     /usr/sbin/installer -pkg "${INTEL}" -target "$3"
     EXIT_CODE=$?
 else
+    echo "M1/arm64 architecture detected."
     /usr/sbin/installer -pkg "${APPLE_SILICON}" -target "$3"
     EXIT_CODE=$?
 fi
