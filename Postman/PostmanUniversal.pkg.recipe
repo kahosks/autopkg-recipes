@@ -184,6 +184,8 @@ fi</string>
             <dict>
                 <key>path_list</key>
                 <array>
+                    <string>%RECIPE_CACHE_DIR%/downloads</string>
+                    <string>%RECIPE_CACHE_DIR%/Postman</string>
                     <string>%RECIPE_CACHE_DIR%/amd64</string>
                     <string>%RECIPE_CACHE_DIR%/arm64</string>
                 </array>
