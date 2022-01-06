@@ -125,11 +125,13 @@
                 <key>file_mode</key>
                 <string>0755</string>
                 <key>file_content</key>
-                <string> #!/bin/zsh
+                <string>#!/bin/zsh
+
 # This script is adapted from Chilcote's Docker recipe, com.github.chilcote.pkg.Docker
 
 declare -r INTEL="$3/private/tmp/%NAME%-amd64.pkg"
 declare -r APPLE_SILICON="$3/private/tmp/%NAME%-arm64.pkg"
+declare -r USR_LOCAL_BIN="$3/usr/local/bin/"
 
 ARCH=$(/usr/bin/arch)
 
@@ -152,6 +154,12 @@ if [[ "${EXIT_CODE}" -ne 0 ]]
 then
     echo "Something went wrong during package installation. Please check install.log and try again. Bailing..."
     exit 1
+fi
+
+if [[ ! -d "${USR_LOCAL_BIN}" ]]
+then
+    /bin/mkdir -p "${USR_LOCAL_BIN}"
+    /bin/chmod 1755 "${USR_LOCAL_BIN}"
 fi</string>
             </dict>
         </dict>
