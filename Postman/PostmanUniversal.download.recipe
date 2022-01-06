@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest amd64 and arm64 versions of Postman.</string>
     <key>Identifier</key>
-    <string>com.github.sks-recipes.download.PostmanUniversal</string>
+    <string>com.github.kahosks.download.PostmanUniversal</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest amd64 and arm64 versions of Postman and combines them into a package.</string>
     <key>Identifier</key>
-    <string>com.github.sks-recipes.pkg.PostmanUniversal</string>
+    <string>com.github.kahosks.pkg.PostmanUniversal</string>
     <key>Input</key>
     <dict>
         <key>BUNDLE_ID</key>
