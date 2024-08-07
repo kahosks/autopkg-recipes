@@ -1,0 +1,13 @@
+---
+Description: Downloads the latest version of Linear for Windows.
+Identifier: com.github.kahosks.download.linear-Win64
+Input:
+  Name: "Linear"
+  FileType: exe
+  DisplayName: "Linear"
+MinimumVersion: "2.3"
+Process:
+  - Processor: LinearWinDownloader
+    Arguments:
+      download_dir: "source"
+      
