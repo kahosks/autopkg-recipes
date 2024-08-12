@@ -24,7 +24,7 @@ Process:
   - Processor: com.github.kahosks.IntuneProcessors/IntuneUploader
     Arguments:
       intunewin_path: "%intunewin_path%" #From IntunePackager
-      powershell_path: "/opt/homebrew/bin/pwsh"
+      powershell_path: "powershell"
       app_name: "Linear"
       checking_root_path: "C:\\Program Files\\Linear"
       checking_filefolder: "Linear.exe"
