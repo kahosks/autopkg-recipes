@@ -15,7 +15,7 @@ Process:
       source_path: "source"
       destination_path: "packaged"
       setup_file: "%found_basename%" #From FileFinder
-      powershell_path: "/opt/homebrew/bin/pwsh" #Remember to change this for GH Actions
+      powershell_path: "powershell" #Remember to change this for GH Actions
 
   - Processor: LinearVersioner
     Arguments:
