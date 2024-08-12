@@ -76,3 +76,4 @@ class IntuneUploader(Processor):
 if __name__ == "__main__":
     PROCESSOR = IntuneUploader()
     PROCESSOR.execute_shell()
+    
