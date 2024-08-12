@@ -1,0 +1,36 @@
+---
+Description: Prepares and Uploads Linear for Windows into Intune.
+Identifier: com.github.kahosks.intune-uploader.linear-Win64
+Input:
+  Name: "Linear"
+  FileType: exe
+MinimumVersion: "2.3"
+Process:
+  - Processor: FileFinder
+    Arguments:
+      pattern: "source/Linear Setup *.exe"
+
+  - Processor: com.github.kahosks.IntuneProcessors/IntunePackager
+    Arguments:
+      source_path: "source"
+      destination_path: "packaged"
+      setup_file: "%found_basename%" #From FileFinder
+      powershell_path: "/opt/homebrew/bin/pwsh" #Remember to change this for GH Actions
+
+  - Processor: LinearVersioner
+    Arguments:
+      file_name: "%found_basename%" #From FileFinder
+
+  - Processor: com.github.kahosks.IntuneProcessors/IntuneUploader
+    Arguments:
+      intunewin_path: "%intunewin_path%" #From IntunePackager
+      powershell_path: "/opt/homebrew/bin/pwsh"
+      app_name: "Linear"
+      checking_root_path: "C:\\Program Files\\Linear"
+      checking_filefolder: "Linear.exe"
+      install_command: "\"%found_basename%\" /S /allusers"
+      uninstall_command: "\"C:\\Program Files\\Linear\\Uninstall Linear.exe\" /S"
+      description: "Linear for Windows"
+      publisher: "Linear"
+      version: "%version%" #From LinearVersioner
+

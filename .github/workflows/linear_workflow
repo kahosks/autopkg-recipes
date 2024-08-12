@@ -1,0 +1,19 @@
+name: Linear Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  WindowsLinearWorkflow:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Autopkg
+        uses: autopkg/setup-autopkg-actions@main
+
+
+      - name: Run Linear Download Autopkg Recipe
+        run: autopkg run Linear/Linear-Win.download.recipe.yaml
+
