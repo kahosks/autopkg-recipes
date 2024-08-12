@@ -15,7 +15,7 @@ Process:
       source_path: "source"
       destination_path: "packaged"
       setup_file: "%found_basename%" #From FileFinder
-      powershell_path: "powershell" #Remember to change this for GH Actions
+      powershell_path: "pwsh" #Remember to change this for GH Actions
 
   - Processor: LinearVersioner
     Arguments:
@@ -24,7 +24,7 @@ Process:
   - Processor: com.github.kahosks.IntuneProcessors/IntuneUploader
     Arguments:
       intunewin_path: "%intunewin_path%" #From IntunePackager
-      powershell_path: "powershell"
+      powershell_path: "pwsh"
       app_name: "Linear"
       checking_root_path: "C:\\Program Files\\Linear"
       checking_filefolder: "Linear.exe"
