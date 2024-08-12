@@ -12,7 +12,7 @@ jobs:
 
       - name: Set up WSL and Ubuntu
         run: |
-          wsl --install -d Ubuntu
+          wsl --install
           wsl -e sudo apt-get update
           wsl -e sudo apt-get install -y git curl
           wsl -e sudo apt-get install -y autopkg
