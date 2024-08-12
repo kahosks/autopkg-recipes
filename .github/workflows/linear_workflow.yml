@@ -10,18 +10,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up WSL and Ubuntu
-        run: |
-          wsl --install
-          wsl -e sudo apt-get update
-          wsl -e sudo apt-get install -y git curl
-          wsl -e sudo apt-get install -y autopkg
-
-      - name: Setup Autopkg in WSL
-        run: |
-          wsl -e autopkg repo-add https://github.com/autopkg/recipes.git
-          wsl -e autopkg repo-update all
+      - name: Setup Autopkg
+        uses: autopkg/setup-autopkg-actions@main
 
       - name: Run Linear Download Autopkg Recipe
-        run: wsl -e autopkg Linear/Linear-Win.download.recipe.yaml
+        run: python autopkg/Code/autopkg run -vv Linear/Linear-Win.download.recipe.yaml
 
