@@ -48,4 +48,3 @@ class IntunePackager(Processor):
 if __name__ == "__main__":
     PROCESSOR = IntunePackager()
     PROCESSOR.execute_shell()
-    
