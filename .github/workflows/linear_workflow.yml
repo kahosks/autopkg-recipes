@@ -15,5 +15,5 @@ jobs:
 
 
       - name: Run Linear Download Autopkg Recipe
-        run: autopkg run Linear/Linear-Win.download.recipe.yaml
+        run: python autopkg run Linear/Linear-Win.download.recipe.yaml
 
