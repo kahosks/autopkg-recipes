@@ -16,3 +16,7 @@ jobs:
       - name: Run Linear Download Autopkg Recipe
         run: python autopkg/Code/autopkg run -vv Linear/Linear-Win.download.recipe.yaml
 
+      - name: Run Linear Intune Autopkg Recipe
+        run:  python autopkg/Code/autopkg run -vv Linear/Linear-Win.intune.recipe.yaml
+
+
