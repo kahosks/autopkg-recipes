@@ -10,16 +10,16 @@ Process:
     Arguments:
       pattern: "source/Linear Setup *.exe"
 
+  - Processor: LinearVersioner
+    Arguments:
+      file_name: "%found_basename%" #From FileFinder
+
   - Processor: com.github.kahosks.IntuneProcessors/IntunePackager
     Arguments:
       source_path: "source"
       destination_path: "packaged"
       setup_file: "%found_basename%" #From FileFinder
       powershell_path: "pwsh" #Remember to change this for GH Actions
-
-  - Processor: LinearVersioner
-    Arguments:
-      file_name: "%found_basename%" #From FileFinder
 
   - Processor: com.github.kahosks.IntuneProcessors/IntuneUploader
     Arguments:
