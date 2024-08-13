@@ -35,7 +35,7 @@ class IntunePackager(Processor):
             os.makedirs(self.env.get("destination_path"), exist_ok=True)
             r = subprocess.Popen([self.env.get("powershell_path"), "IntuneProcessors/intune-package-win32.ps1", self.env.get("source_path"), self.env.get("destination_path"), self.env.get("setup_file")], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             print(r.stdout.read().decode().strip())
-            file_name = self.env.get("destination_path") + "/" + self.env.get("setup_file").replace(".exe", ".intunewin")
+            file_name = self.env.get("destination_path") + "\\" + self.env.get("setup_file").replace(".exe", ".intunewin")
             print("Confirming " + file_name + " exists...")
             if (os.path.exists(file_name)) is True:
                 print("File created @ " + file_name)
