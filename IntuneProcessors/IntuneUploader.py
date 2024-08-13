@@ -56,9 +56,6 @@ class IntuneUploader(Processor):
             r = subprocess.Popen([
                 self.env.get("powershell_path"),
                 "IntuneProcessors/intune-add-win32.ps1",
-                os.environ["ClientID"],
-                os.environ["ClientSecret"],
-                os.environ["TenantID"],
                 self.env.get("app_name"),
                 self.env.get("intunewin_path"),
                 self.env.get("checking_root_path"),

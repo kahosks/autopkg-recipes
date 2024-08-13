@@ -1,18 +1,18 @@
 Set-PSRepository PSGallery -InstallationPolicy Trusted
 Install-Module -Name "IntuneWin32App" 
 
-$ClientID= $args[0]
-$ClientSecret= $args[1]
-$TenantID= $args[2]
-$AppName= $args[3]
-$IntuneWinFile= $args[4]
-$CheckRoot= $args[5]
-$CheckTarget= $args[6]
-$InstallCommand= $args[7]
-$UninstallCommand= $args[8]
-$Description= $args[9]
-$Publisher= $args[10]
-$AppVersion= $args[11]
+$ClientID= $Env:ClientID
+$ClientSecret= $Env:ClientSecret
+$TenantID= $Env:TenantID
+$AppName= $args[0]
+$IntuneWinFile= $args[1]
+$CheckRoot= $args[2]
+$CheckTarget= $args[3]
+$InstallCommand= $args[4]
+$UninstallCommand= $args[5]
+$Description= $args[6]
+$Publisher= $args[7]
+$AppVersion= $args[8]
 
 Write-Output "ClientID: $ClientID
 ClientSecret: $ClientSecret
