@@ -6,5 +6,5 @@ $Destination = $args[1]
 $FileName = $args[2]
 
 Write-Output "Begin Packaging..."
-New-IntuneWin32AppPackage -SourcePath $Source -DestinationPath $Destination -SetupFile $FileName
+New-IntuneWin32AppPackage -SourceFolder $Source -OutputFolder $Destination -SetupFile $FileName
 Write-Output "Packaging Complete"
