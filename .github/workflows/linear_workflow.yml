@@ -20,7 +20,5 @@ jobs:
         env:
           ClientID: ${{ secrets.CLIENTID }}
           ClientSecret: ${{ secrets.CLIENTSECRET }}
-          TenantID: ${{ secrets.TENANTID}}
+          TenantID: ${{ secrets.TENANTID }}
         run: python autopkg/Code/autopkg run -vv Linear/Linear-Win.intune.recipe.yaml
-
-
