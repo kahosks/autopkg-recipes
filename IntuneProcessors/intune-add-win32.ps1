@@ -14,7 +14,10 @@ $Description= $args[9]
 $Publisher= $args[10]
 $AppVersion= $args[11]
 
-Write-Output "AppName: $AppName
+Write-Output "ClientID: $ClientID
+ClientSecret: $ClientSecret
+TenantID: $TenantID
+AppName: $AppName
 IntuneWinFile: $IntuneWinFile
 CheckRoot: $CheckRoot
 CheckTarget: $CheckTarget
