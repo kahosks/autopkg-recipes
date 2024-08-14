@@ -1,10 +1,10 @@
-Set-PSRepository PSGallery -InstallationPolicy Trusted
-Install-Module -Name "IntuneWin32App" 
-
 $Source= $args[0]
 $Destination = $args[1]
 $FileName = $args[2]
 
 Write-Output "Begin Packaging..."
-New-IntuneWin32AppPackage -SourceFolder $Source -OutputFolder $Destination -SetupFile $FileName
+Start-DownloadFile -URL "https://github.com/microsoft/Microsoft-Win32-Content-Prep-Tool/raw/master/IntuneWinAppUtil.exe" -Path $env:TEMP -Name "IntuneWinAppUtil.exe"
+$IntuneWinAppUtilPath = Join-Path -Path $env:TEMP -ChildPath "IntuneWinAppUtil.exe"
+$PackageInvocation = Invoke-Executable -FilePath $IntuneWinAppUtilPath -Arguments "-c ""$($SourceFolder)"" -s ""$($SetupFile)"" -o ""$($OutPutFolder)"" -q" -RedirectStandardOutput $false -RedirectStandardError $false -CreateNoWindow $false -UseShellExecute $true
+
 Write-Output "Packaging Complete"
