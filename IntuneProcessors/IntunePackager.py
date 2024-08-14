@@ -34,6 +34,7 @@ class IntunePackager(Processor):
     def main(self):
         try:
             urlretrieve("https://github.com/microsoft/Microsoft-Win32-Content-Prep-Tool/raw/master/IntuneWinAppUtil.exe","IntuneWinAppUtil.exe")
+            ls
             os.makedirs(self.env.get("destination_path"), exist_ok=True)
             command = [
                 "IntuneWinAppUtil.exe",
@@ -43,7 +44,7 @@ class IntunePackager(Processor):
                 '-q'
             ]
             #r = subprocess.Popen([self.env.get("powershell_path"), "IntuneProcessors/intune-package-win32.ps1", self.env.get("source_path"), self.env.get("destination_path"), self.env.get("setup_file")], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            r = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            #r = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             print(r.stdout.read().decode().strip())
             file_name = self.env.get("destination_path") + "\\" + self.env.get("setup_file").replace(".exe", ".intunewin")
             print("Confirming " + file_name + " exists...")
