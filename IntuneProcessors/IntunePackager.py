@@ -35,6 +35,7 @@ class IntunePackager(Processor):
         try:
             urlretrieve("https://github.com/microsoft/Microsoft-Win32-Content-Prep-Tool/raw/master/IntuneWinAppUtil.exe","IntuneWinAppUtil.exe")
             os.makedirs(self.env.get("destination_path"), exist_ok=True)
+            print ("IntuneWinAppUtil.exe","-c {}".format(self.env.get("source_path")),"-s {}".format(self.env.get("setup_file")),"-o {}".format(self.env.get("destination_path")), "-q")
             #r = subprocess.Popen([self.env.get("powershell_path"), "IntuneProcessors/intune-package-win32.ps1", self.env.get("source_path"), self.env.get("destination_path"), self.env.get("setup_file")], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             r = subprocess.Popen(["IntuneWinAppUtil.exe","-c {}".format(self.env.get("source_path")),"-s {}".format(self.env.get("setup_file")),"-o {}".format(self.env.get("destination_path")), "-q"])
             print(r.stdout.read().decode().strip())
