@@ -19,7 +19,6 @@ Process:
       source_path: "source"
       destination_path: "packaged"
       setup_file: "%found_basename%" #From FileFinder
-      powershell_path: "pwsh" #Remember to change this for GH Actions
 
   - Processor: com.github.kahosks.IntuneProcessors/IntuneUploader
     Arguments:
